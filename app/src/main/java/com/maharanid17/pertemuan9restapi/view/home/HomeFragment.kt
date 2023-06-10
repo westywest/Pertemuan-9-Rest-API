@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.maharanid17.pertemuan9restapi.R
 import com.maharanid17.pertemuan9restapi.adapter.HomeAdapter
@@ -25,6 +26,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnMovetoTambah.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_tambahFragment)
+        }
 
         val viewModel = ViewModelProvider(this).get(ViewModelMahasiswa::class.java)
         viewModel.getDataMahasiswa().observe(viewLifecycleOwner){
